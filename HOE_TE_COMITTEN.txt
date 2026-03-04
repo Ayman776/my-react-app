@@ -1,0 +1,3 @@
+git add .
+git commit -m "BERICHT HIER"
+git push
