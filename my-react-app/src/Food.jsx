@@ -4,15 +4,14 @@ function food (){
     const food3 = "Salad";
     
     return(
-        <>
-        <ul>
-            <li>Apple</li>
-            <li>{food1}</li>
-            <li>{food2}</li>
-            <li>{food3}</li>
-        </ul>
-        </>
-
+        <div className="food">
+            <ul>
+                <li>Apple</li>
+                <li>{food1}</li>
+                <li>{food2}</li>
+                <li>{food3}</li>
+            </ul>
+        </div>
     );
 }
 
