@@ -1,31 +1,16 @@
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';  
-import Food from './Food.jsx';
-import Card from './Card.jsx';
-import Button from './Button.jsx';
-import Student from './Student.jsx';
+import Sidebar from "./components/sidebar.jsx"
+import Dashboard from "./pages/Dashboard.jsx"
 
 function App() {
   return (
-    <div>
-      <Header></Header>
-      <Food></Food>
-      <Footer></Footer>
-      <Card></Card>
-      <Button></Button>
-      <Student></Student>
+    <div className="layout">
 
-      
-      <Student name="John Doe" age={20} isStudent={true} />
-      <Student name="Jane Smith" age={25} isStudent={false} />
-      
+      <Sidebar />
 
-      
+      <Dashboard />
 
     </div>
-  );
+  )
 }
 
 export default App
-
-  
