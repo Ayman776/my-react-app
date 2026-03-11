@@ -1,16 +1,34 @@
-import Sidebar from "./components/sidebar.jsx"
-import Dashboard from "./pages/Dashboard.jsx"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Sidebar from "./components/sidebar.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Login from "./Login.jsx";
+import Register from "./Register.jsx";
 
 function App() {
   return (
-    <div className="layout">
+    <BrowserRouter>
+      <Routes>
+      
+        <Route path="/login" element={<Login />} />
 
-      <Sidebar />
+    
+        <Route path="/register" element={<Register />} />
 
-      <Dashboard />
-
-    </div>
-  )
+       
+        <Route
+          path="/dashboard"
+          element={
+            <div className="layout">
+              <Sidebar />
+              <Dashboard />
+              
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

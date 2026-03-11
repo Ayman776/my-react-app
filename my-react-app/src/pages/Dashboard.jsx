@@ -23,7 +23,7 @@ const recentTrips = [
       <header className="header">
       <h1>Mobiliteit Dashboard</h1>
 <div className="user">
-        👤 Ayman
+        Ayman.A
       </div>    </header>
   
 

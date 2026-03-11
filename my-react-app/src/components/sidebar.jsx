@@ -10,7 +10,7 @@ function Sidebar (){
     </ul>
 
     <div className="logout">
-        <div className="logout">Log out</div>
+        <div className="logout"> <a href="/login">Log out</a></div>
       </div>
 
 </div>

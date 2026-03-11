@@ -94,4 +94,41 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 .logout{
   margin-top: 200px;
   margin-left: 15px;
+  
+}
+
+.logout a{
+  color: white;
+  text-decoration: none;
+  border: #0062ff 1px solid;
+  
+}
+
+.auth-page{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+}
+
+.auth-form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  width:250px;
+}
+
+.auth-form input{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+
+.auth-form button{
+  padding:10px;
+  border:none;
+  background:#3b82f6;
+  color:white;
+  border-radius:6px;
 }
