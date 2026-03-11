@@ -9,6 +9,10 @@ function Sidebar (){
         <li>Instellingen</li>
     </ul>
 
+    <div className="logout">
+        <div className="logout">Log out</div>
+      </div>
+
 </div>
     );
 }
