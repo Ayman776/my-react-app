@@ -15,17 +15,20 @@ function Register (){
     return(
         <div className="auth-page">
 
-            <h1>register</h1>
+            <div className="container">
 
-            <form ClassName=" auth-form">
-                <input type="text" placeholder="Name" />
+
+            <h1>Registreer</h1>
+
+
+            <form className="register-form" onSubmit={handleRegister}>
                 <input type="email" placeholder="Email"/>
                 <input type="password" placeholder="Password"/>
-                <button type="submit"> <a href="/dashboard">Register</a></button>
+                <button type="submit">Register</button>
 
                 <p>Heeft u al een account? <a href="/login">Login</a></p>
             </form>
-
+</div>
 
         </div>
     )
