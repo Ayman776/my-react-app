@@ -101,7 +101,17 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   color: white;
   text-decoration: none;
   border: #0062ff 1px solid;
+  padding: 6px 12px;
+  background-color: #0062ff;
+  cursor: pointer;
+  border-radius: 4px;
   
+}
+
+.logout a:hover{
+  background-color: #0051cc;
+  border-color: #0051cc;
+ 
 }
 
 .auth-page{
@@ -117,12 +127,14 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   flex-direction:column;
   gap:15px;
   width:250px;
+  
 }
 
 .auth-form input{
   padding:10px;
   border-radius:6px;
   border:1px solid #ddd;
+  align-items: center;
 }
 
 .auth-form button{
@@ -209,11 +221,50 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 }
 
 .container{
-  width:350px;
-  padding:40px;
+  width:500px;
+  padding:80px;
   background:white;
   border-radius:12px;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  margin-right: -50px;
+  margin-bottom: 190px;
 }
+
+.home{
+ position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.logo {
+  width: 120px; /* pas aan naar wens */
+  height: auto;
+  cursor: pointer;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.chart-container h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  font-weight: 500;
+}
+
+.chart-wrapper {
+  height: 250px; /* essentieel anders wordt de chart niet zichtbaar */
+}
+
+
+
 
 

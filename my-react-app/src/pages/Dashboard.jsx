@@ -1,3 +1,6 @@
+import Chart from "../components/Chart"
+
+
 function Dashboard() {
 
   const balance = 50
@@ -57,7 +60,10 @@ const recentTrips = [
                     <li key={index}>{trip}</li>
                 ))}
             </ul>
-          
+          <div>
+            <h1>Chart</h1>
+            <Chart />
+          </div>
         </div>
  
 
