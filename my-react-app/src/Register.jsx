@@ -54,6 +54,13 @@ function Register() {
     return (
         <div className="auth-page">
 
+            <div className="home">
+                <a href="/">
+                    <img src="/src/assets/mobiliteit.png" alt="Mobiliteit logo" className="logo" />
+                </a>
+            </div>
+
+
             <div className="container">
 
 

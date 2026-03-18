@@ -1,18 +1,51 @@
+import { useState } from "react";
+
 function Header() {
-return (
-    <header className="header">
-        <h1>Welkom</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Homee</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>   
-            </ul>
-        </nav>
-        <hr />
-    </header>
-);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+    const handleLogout = () => console.log("Uitloggen…");
+
+    return (
+        <header className="header-container">
+
+            <div className="header-grid">
+
+                <div className="header-left">
+                    <h1>Mobiliteit Dashboard</h1>
+                </div>
+
+
+                <div className="header-right">
+                    <div className="notification">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Bell-Notification--Streamline-Sharp" height="24" width="24">
+                            <desc>
+                                Bell Notification Streamline Icon: https://streamlinehq.com
+                            </desc>
+                            <g id="bell-notification--alert-bell-ring-notification-alarm">
+                                <path id="Union" fill="#000000" fill-rule="evenodd" d="M4.25002 9c0 -4.28021 3.4698 -7.75 7.74998 -7.75 4.2802 0 7.75 3.46979 7.75 7.75v4.8229l2.4636 4.9271H1.7865l2.46352 -4.9271V9ZM10 23h4v-2h-4v2Z" clip-rule="evenodd" stroke-width="1"></path>
+                            </g>
+                        </svg>
+                        <span className="notif-badge">3</span>
+                    </div>
+
+                    <div className="user-dropdown">
+                        <button className="user-btn" onClick={toggleDropdown}>
+                            Ayman.A ▼
+                        </button>
+                        {dropdownOpen && (
+                            <div className="dropdown-menu">
+                                <button className="dropdown-item">Profiel</button>
+                                <button className="dropdown-item" onClick={handleLogout}>
+                                    <a href="./login">Uitloggen</a>
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </header>
+    );
 }
 
-export default Header
+export default Header;

@@ -3,16 +3,20 @@ import Image from './assets/mobiliteit.png';
 
 function Home (){
     return(
-        <div className= "home-page">
-            <h1>Welkom bij Mobiliteit</h1>
-            <img src={Image} alt="Mobiliteit" />
-            <p>Log in of registreer om je mobiliteit dashboard te bekijken.</p>
-           <div className="home-buttons">
-  <a href="/login" className="home-btn">Login</a>
-  <a href="/register" className="home-btn">Registreren</a>
-</div>
-        </div>
+      <div className="welcome-page">
+  <div className="welcome-left">
+    <h1>Mobiliteit Dashboard</h1>
+    <p>Volg al je trips, saldo en kilometers in één overzicht.</p>
+    <div className="cta-buttons">
+    <a href="/login" className="btn-login">Inloggen</a>
+       <a href="/register" className="btn-register">Registeren</a>
+    </div>
+  </div>
 
+  <div className="welcome-right">
+    <img src="src/assets/mobiliteit.png" alt="Dashboard illustratie" />
+  </div>
+</div>
     ); 
 }
 
