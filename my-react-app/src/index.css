@@ -105,6 +105,11 @@ body {
   transition: background 0.2s ease;
 }
 
+.dropdown-item a{
+  text-decoration: none;
+  color: #111;
+}
+
 .dropdown-item:hover {
   background: #f5f7fb;
 }
@@ -258,7 +263,13 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   flex-direction:column;
   gap:15px;
   width:250px;
+  text-decoration: none;
   
+}
+
+.auth-form a{
+text-decoration: none;
+color: #3b82f6;
 }
 
 .auth-form input{
@@ -281,6 +292,11 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   flex-direction:column;
   gap:15px;
   width:250px;
+}
+
+.register-form a{
+text-decoration: none;
+color: #3b82f6;
 }
 
 .register-form input{
@@ -335,6 +351,7 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 .btn-login {
   background-color: #4f46e5;
   color: white;
+  text-decoration: none;
 }
 
 .btn-login:hover {
@@ -344,6 +361,7 @@ background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 .btn-register {
   background-color: #e5e7eb;
   color: #111;
+  text-decoration: none;
 }
 
 .btn-register:hover {
