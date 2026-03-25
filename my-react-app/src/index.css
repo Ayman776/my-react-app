@@ -526,3 +526,17 @@ padding: 20px;
   color: white;
 }
 
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.toggle input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
