@@ -1,13 +1,18 @@
+import { Link } from "react-router-dom";
+
 function Sidebar (){
+
+    
     return(
+        
 <div className= "sidebar">
     <h2>Reisbalans</h2>
     <ul>
-        <li>Dashboard</li>
-        <li>Trips</li>
-        <li>Saldo</li>
-        <li>Instellingen</li>
-    </ul>
+  <li><Link to="/dashboard">Dashboard</Link></li>
+  <li><Link to="/profile">Profiel</Link></li>
+  <li><Link to="/privacy">Privacy</Link></li>
+  <li><Link to="/settings">Instellingen</Link></li>
+</ul>
 
     <div className="logout">
         <div className="logout"> <a href="/login">Log out</a></div>
