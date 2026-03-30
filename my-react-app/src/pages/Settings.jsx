@@ -1,50 +1,114 @@
 import { useState, useEffect } from "react";
 
 function Settings() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [notifications, setNotifications] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
 
-  // Effect om dark mode klasse op <body> te zetten
+  const [notifications, setNotifications] = useState(() => {
+    return localStorage.getItem("notifications") !== "false";
+  });
+
+  const [sound, setSound] = useState(() => {
+    return localStorage.getItem("sound") !== "false";
+  });
+
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem("language") || "nl";
+  });
+
+  // Dark mode toepassen
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
+    document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
+
+  // Opslaan instellingen
+  useEffect(() => {
+    localStorage.setItem("notifications", notifications);
+  }, [notifications]);
+
+  useEffect(() => {
+    localStorage.setItem("sound", sound);
+  }, [sound]);
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
+
+  const handleDeleteAccount = () => {
+    const confirmDelete = window.confirm(
+      "Weet je zeker dat je je account wilt verwijderen?"
+    );
+    if (confirmDelete) {
+      alert("Account verwijderd (demo)");
+    }
+  };
 
   return (
     <div className="settings-page">
       <h1>Instellingen</h1>
 
+      {/* WEERGAVE */}
       <div className="settings-card">
         <h3>Weergave</h3>
-        <label>
+        <label className="switch">
           <input
             type="checkbox"
             checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
+            onChange={() => setDarkMode((prev) => !prev)}
           />
-          Donkere modus
+          <span>Donkere modus</span>
         </label>
       </div>
 
+      {/* NOTIFICATIES */}
       <div className="settings-card">
         <h3>Notificaties</h3>
-        <label>
+
+        <label className="switch">
           <input
             type="checkbox"
             checked={notifications}
-            onChange={() => setNotifications(!notifications)}
+            onChange={() => setNotifications((prev) => !prev)}
           />
-          Email-notificaties
+          <span>Email-notificaties</span>
+        </label>
+
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={sound}
+            onChange={() => setSound((prev) => !prev)}
+          />
+          <span>Geluid</span>
         </label>
       </div>
 
+      {/* TAAL */}
+      <div className="settings-card">
+        <h3>Taal</h3>
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
+          <option value="nl">Nederlands</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      {/* ACCOUNT */}
       <div className="settings-card">
         <h3>Account</h3>
-        <button className="profile-btn">Wachtwoord wijzigen</button>
-        <button className="profile-btnn" style={{ backgroundColor: "red" }}>
+
+        <button className="profile-btn">
+          Wachtwoord wijzigen
+        </button>
+
+        <button
+          className="profile-btn danger"
+          onClick={handleDeleteAccount}
+        >
           Account verwijderen
         </button>
       </div>
