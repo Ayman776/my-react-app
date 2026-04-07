@@ -10,7 +10,7 @@ function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [avatar, setAvatar] = useState("");
+    
 
     const [error, setError] = useState("");
 
@@ -21,7 +21,7 @@ function Register() {
             name: name,
             email: email,
             password: password,
-            avatar: avatar || "https://placehold.co/100", // Voor nu zo laten
+        
         }
 
 
@@ -71,7 +71,7 @@ function Register() {
                     <input type="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                    <input type="text" value={avatar} onChange={(e) => setAvatar(e.target.value)} placeholder="Avatar URL" />
+              
 
                     <p>{error}</p>
 
