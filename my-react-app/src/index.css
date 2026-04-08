@@ -925,7 +925,7 @@ body {
 
 .chart-box,
 .stats-box {
-  background: white;
+  background: rgba(0, 0, 0, 0.402);
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.04);
@@ -952,4 +952,16 @@ body {
 .icon {
   font-size: 18px;
   opacity: 0.9;
+}
+
+.vervoer{
+  padding: 20px;
+}
+
+.progress-item{
+  margin-bottom: 6px;
+}
+
+.label{
+  margin-bottom: 6px
 }

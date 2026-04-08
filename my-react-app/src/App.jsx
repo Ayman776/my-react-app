@@ -7,6 +7,7 @@ import Settings from "./pages/settings.jsx";
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";
+import Vervoer from "./pages/vervoer.jsx";
 
 
 
@@ -39,6 +40,18 @@ function App() {
             </div>
           }
         />
+
+          <Route
+          path="/vervoer"
+          element={
+            <div className="layout" style={{ display: "flex" }}>
+              <Sidebar />
+              <Vervoer />
+            </div>
+          }
+        />
+    
+
 
         <Route
           path="/privacy"

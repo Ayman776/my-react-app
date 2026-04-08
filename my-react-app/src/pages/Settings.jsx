@@ -9,9 +9,7 @@ function Settings() {
     return localStorage.getItem("notifications") !== "false";
   });
 
-  const [sound, setSound] = useState(() => {
-    return localStorage.getItem("sound") !== "false";
-  });
+  
 
   const [language, setLanguage] = useState(() => {
     return localStorage.getItem("language") || "nl";
@@ -28,9 +26,7 @@ function Settings() {
     localStorage.setItem("notifications", notifications);
   }, [notifications]);
 
-  useEffect(() => {
-    localStorage.setItem("sound", sound);
-  }, [sound]);
+
 
   useEffect(() => {
     localStorage.setItem("language", language);
@@ -75,14 +71,7 @@ function Settings() {
           <span>Email-notificaties</span>
         </label>
 
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={sound}
-            onChange={() => setSound((prev) => !prev)}
-          />
-          <span>Geluid</span>
-        </label>
+   
       </div>
 
       {/* TAAL */}
