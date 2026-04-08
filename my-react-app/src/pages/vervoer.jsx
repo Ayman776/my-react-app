@@ -1,21 +1,21 @@
 import { FaCar, FaTrain, FaBicycle, FaBus } from "react-icons/fa";
-function Vervoer(){
+function Vervoer() {
 
-   const transportData = [
+    const transportData = [
         { type: "Auto", trips: 8, cost: 36, km: 220 },
         { type: "Trein", trips: 4, cost: 28, km: 100 },
-        { type: "Bus", trips: 12, cost: 22, km: 50} ,
+        { type: "Bus", trips: 12, cost: 22, km: 50 },
     ];
 
-      const getIcon = (type) => {
+    const getIcon = (type) => {
         if (type === "Auto") return <FaCar className="icon" />;
         if (type === "Trein") return <FaTrain className="icon" />;
-         if (type === "Fiets") return <FaBicycle className="icon" />;
-           if (type === "Bus") return <FaBus className="icon" />;
+        if (type === "Fiets") return <FaBicycle className="icon" />;
+        if (type === "Bus") return <FaBus className="icon" />;
         return null;
     };
 
-     const totalTrips = transportData.reduce((acc, item) => acc + item.trips, 0);
+    const totalTrips = transportData.reduce((acc, item) => acc + item.trips, 0);
 
 
     return (
