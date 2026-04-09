@@ -4,33 +4,40 @@ return(
 
             <h1>Klantenservice</h1>
 
-            <input
-            type="text"
-            placeholder="waarmee kunnen we je helpen?"
-            className="search"
-            />
+         <div className="card">
+                <h3>Zoek</h3>
+                <input 
+                    type="text" 
+                    placeholder="Waarmee kunnen we je helpen?"
+                    className="search"
+                />
+            </div>
 
-            <div className="faq">
-                <h3>veelgestelde vragen</h3>
 
-                <div className="faq=item">
-                    <p><strong>hoe voeg ik een trip toe?</strong></p>
-                    <p>Ga naar je dashboard en klik op "Nieuwe trip"</p>
-                </div>
-
-                <div className="faq-item">
-                    <p><strong>Hoe laad ik saldo op?</strong></p>
+            <div className="card">
+                <h3>Veelgestelde vragen</h3>
+                  <h3>Hoe voeg ik een trip toe?</h3>
+                <p>Ga naar dashboard en klik op "Nieuwe trip".</p>
+                   <p><strong>Hoe laad ik saldo op?</strong></p>
                     <p>Gebruik de knop "Saldo opladen".</p>
-                </div>
+
+            
+            </div>
+
+               
+            
 
 <div className="contact">
     <h3>Contact</h3>
+     <p> Telefoon: 06-12345678</p>
+                <p> Email: support@vervoerapp.nl</p>
+
     <button className="btn">Stuur ons een Email</button>
     <button className="btn primary">Stuur ons een bericht</button>
 </div>
 
             </div>
-            </div>
+            
 )
 
 

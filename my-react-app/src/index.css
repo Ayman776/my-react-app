@@ -983,3 +983,42 @@ body {
   transition: width 0.3s ease;
 }
 
+.support{
+  padding: 24px;
+  max-width: 800px;
+  margin:0 auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 0px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.search {
+  width : 100%;
+  padding: 20px;
+  border-radius: 0px;
+  margin-bottom: 20px;
+}
+
+.faq-item{
+  margin-bottom: 12px;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+
+.contact{
+  background: white;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+.btn {
+  margin-right: 10px;
+}
