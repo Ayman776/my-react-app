@@ -13,6 +13,8 @@ function Sidebar (){
   <li><Link to="/profile">Profiel</Link></li>
   <li><Link to="/privacy">Privacy</Link></li>
   <li><Link to="/settings">Instellingen</Link></li>
+    <li><Link to="/klantenservice">Klantenservice</Link></li>
+
 </ul>
 
     <div className="logout">

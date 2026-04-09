@@ -8,6 +8,7 @@ import Home from "./Home.jsx";
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";
 import Vervoer from "./pages/vervoer.jsx";
+import Klantenservice from "./pages/klantenservice.jsx";
 
 
 
@@ -62,6 +63,18 @@ function App() {
             </div>
           }
         />
+
+          <Route
+          path="/klantenservice"
+          element={
+            <div className="layout" style={{ display: "flex" }}>
+              <Sidebar />
+              <Klantenservice />
+            </div>
+          }
+        />
+    
+
 
         <Route
           path="/settings"

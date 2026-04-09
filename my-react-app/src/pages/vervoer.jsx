@@ -5,6 +5,7 @@ function Vervoer() {
         { type: "Auto", trips: 8, cost: 36, km: 220 },
         { type: "Trein", trips: 4, cost: 28, km: 100 },
         { type: "Bus", trips: 12, cost: 22, km: 50 },
+             { type: "Fiets", trips: 6, cost: 0, km: 5 },
     ];
 
     const getIcon = (type) => {
