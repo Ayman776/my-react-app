@@ -1,46 +1,62 @@
-function Klantenservice(){
-return(
-   <div className="support">
+import { useState } from "react";
 
-            <h1>Klantenservice</h1>
+function Klantenservice() {
+  const [search, setSearch] = useState("");
 
-         <div className="card">
-                <h3>Zoek</h3>
-                <input 
-                    type="text" 
-                    placeholder="Waarmee kunnen we je helpen?"
-                    className="search"
-                />
-            </div>
+  return (
+    <div className="support">
+      <h1>Klantenservice</h1>
 
+   
+      <section className="card">
+        <h2>Zoek</h2>
+        <label htmlFor="search" className="visually-hidden">
+          Zoek hulp
+        </label>
+        <input
+          id="search"
+          type="text"
+          placeholder="Waarmee kunnen we je helpen?"
+          className="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </section>
 
-            <div className="card">
-                <h3>Veelgestelde vragen</h3>
-                  <h3>Hoe voeg ik een trip toe?</h3>
-                <p>Ga naar dashboard en klik op "Nieuwe trip".</p>
-                   <p><strong>Hoe laad ik saldo op?</strong></p>
-                    <p>Gebruik de knop "Saldo opladen".</p>
+      <section className="card">
+        <h2>Veelgestelde vragen</h2>
 
-            
-            </div>
+        <div className="faq-item">
+          <h4>Hoe voeg ik een trip toe?</h4>
+          <p>Ga naar je dashboard en klik op "Nieuwe trip".</p>
+        </div>
 
-               
-            
+        <div className="faq-item">
+          <h4>Hoe laad ik saldo op?</h4>
+          <p>Gebruik de knop "Saldo opladen" in je accountoverzicht.</p>
+        </div>
+      </section>
 
-<div className="contact">
-    <h3>Contact</h3>
-     <p> Telefoon: 06-12345678</p>
-                <p> Email: support@vervoerapp.nl</p>
+ 
+      <section className="contact card">
+        <h2>Contact</h2>
 
-    <button className="btn">Stuur ons een Email</button>
-    <button className="btn primary">Stuur ons een bericht</button>
-</div>
+        <p>
+           <a href="tel:0612345678">06-12345678</a>
+        </p>
+        <p>
+           <a href="mailto:support@vervoerapp.nl">
+            support@vervoerapp.nl
+          </a>
+        </p>
 
-            </div>
-            
-)
-
-
+        <div className="actions">
+          <button className="btn">Email sturen</button>
+          <button className="btn primary">Bericht sturen</button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
-export default Klantenservice
+export default Klantenservice;
