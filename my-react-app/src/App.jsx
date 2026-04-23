@@ -73,6 +73,8 @@ function App() {
             </div>
           }
         />
+
+        
     
 
 
@@ -84,6 +86,7 @@ function App() {
               <Settings />
             </div>
           }
+          
         />
       </Routes>
     </BrowserRouter>

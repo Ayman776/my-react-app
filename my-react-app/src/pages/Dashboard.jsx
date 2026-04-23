@@ -6,141 +6,120 @@ import { FaCar, FaEuroSign } from "react-icons/fa";
 import { MdTrendingUp } from "react-icons/md";
 
 function Dashboard() {
-    
-    const [balance] = useState(50);
-    const [trips] = useState(12);
-    const [km] = useState(320);
-    const [filter, setFilter] = useState("week");
+  const [balance, setBalance] = useState(50);
+  const [trips] = useState(12);
+  const [km] = useState(320);
 
-    const trends = {
-        balance: +5.2,
-        trips: -2.1,
-        km: +12.4,
-    };
+  const [showTripModal, setShowTripModal] = useState(false);
+  const [showBalanceModal, setShowBalanceModal] = useState(false);
+  const [addAmount, setAddAmount] = useState("");
 
-  
-    const [recentTrips] = useState([
-        { from: "Utrecht", to: "Amsterdam", time: "25 min", type: "Auto", cost: 4.5, date: "Vandaag" },
-        { from: "Amsterdam", to: "Rotterdam", time: "40 min", type: "Trein", cost: 7.2, date: "Gisteren" },
-        { from: "Utrecht", to: "Den Haag", time: "35 min", type: "Auto", cost: 5.1, date: "Ma 2 okt" },
-    ]);
+  const recentTrips = [
+    { from: "Utrecht", to: "Amsterdam", time: "25 min", type: "Auto", cost: 4.5, date: "Vandaag" },
+    { from: "Amsterdam", to: "Rotterdam", time: "40 min", type: "Trein", cost: 7.2, date: "Gisteren" },
+  ];
 
-    const totalCost = recentTrips.reduce((acc, trip) => acc + trip.cost, 0);
-    const mostUsedType = "Auto"; 
+  const totalCost = recentTrips.reduce((acc, t) => acc + t.cost, 0);
 
-  
-    const renderTrend = (value) => (
-        <span className={value >= 0 ? "trend up" : "trend down"}>
-            {value >= 0 ? "↑" : "↓"} {Math.abs(value)}%
-        </span>
-    );
+  const addBalance = () => {
+    const amount = Number(addAmount);
+    if (!amount) return;
+    setBalance(balance + amount);
+    setAddAmount("");
+    setShowBalanceModal(false);
+  };
 
-    return (
-        <div className="dashboard">
+  return (
+    <div className="dashboard">
+      <Header />
 
-            <Header />
+      <div className="actions">
+        <button className="btn primary" onClick={() => setShowTripModal(true)}>
+          + Nieuwe trip
+        </button>
 
-        
-            <div className="actions">
-                <button className="btn primary">+ Nieuwe trip</button>
-                <button className="btn">Saldo opladen</button>
-            </div>
+        <button className="btn" onClick={() => setShowBalanceModal(true)}>
+          Saldo opladen
+        </button>
+      </div>
 
-            <div className="cards">
-                <div className="card">
-                    <h3>Saldo</h3>
-                    <p>€{balance}</p>
-                    {renderTrend(trends.balance)}
-                </div>
-
-                <div className="card">
-                    <h3>Trips</h3>
-                    <p>{trips}</p>
-                    {renderTrend(trends.trips)}
-                </div>
-
-                <div className="card">
-                    <h3>Kilometers</h3>
-                    <p>{km} km</p>
-                    {renderTrend(trends.km)}
-                </div>
-            </div>
-
-          
-            <div className="chart-section">
-                <div className="chart-header">
-                    <h3>Overzicht</h3>
-
-                    <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-                        <option value="day">Vandaag</option>
-                        <option value="week">Deze week</option>
-                        <option value="month">Deze maand</option>
-                    </select>
-                </div>
-
-                <div className="chart-box">
-                    <Chart filter={filter} />
-                </div>
-            </div>
-
-           
-          <div className="insights">
-    <h3>Inzichten</h3>
-
-    <p className="insight-item">
-        <MdTrendingUp className="icon" />
-        Je hebt {trends.km}% meer kilometers gemaakt deze periode
-    </p>
-
-    <p className="insight-item">
-        <FaEuroSign className="icon" />
-        Totale kosten recente trips: €{totalCost.toFixed(2)}
-    </p>
-
-    <p className="insight-item">
-        <FaCar className="icon" />
-        Meest gebruikte vervoer: {mostUsedType}
-    </p>
-</div>
-
-        
-            <div className="recent">
-                <h3>Recente Trips</h3>
-
-                <div className="trip-list">
-                    {recentTrips.map((trip, index) => (
-                        <div className="trip-row" key={index}>
-                            <div className="trip-left">
-                                <span className="trip-route">
-                                    {trip.from} → {trip.to}
-                                </span>
-
-                                <span className="trip-sub">
-                                    {trip.date} • {trip.time} • {trip.type}
-                                </span>
-                            </div>
-
-                            <div className="trip-cost">
-                                €{trip.cost.toFixed(2)}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-        
-            <div className="dashboard-row">
-                <div className="chart-box">
-                    <Chart filter={filter} />
-                </div>
-
-                <div className="stats-box">
-                    <Stats />
-                </div>
-            </div>
-
+      <div className="cards">
+        <div className="card">
+          <h3>Saldo</h3>
+          <p>€{balance}</p>
         </div>
-    );
+
+        <div className="card">
+          <h3>Trips</h3>
+          <p>{trips}</p>
+        </div>
+
+        <div className="card">
+          <h3>Kilometers</h3>
+          <p>{km} km</p>
+        </div>
+      </div>
+
+      <div className="chart-box">
+        <Chart />
+      </div>
+
+      <div className="insights">
+        <h3>Inzichten</h3>
+        <p><MdTrendingUp /> Meer activiteit deze week</p>
+        <p><FaEuroSign /> €{totalCost.toFixed(2)} kosten</p>
+        <p><FaCar /> Meest gebruikt: Auto</p>
+      </div>
+
+      <div className="bottom-section">
+        <Stats />
+      </div>
+
+      {showBalanceModal && (
+  <div className="modal-overlay">
+    <div className="modal">
+      <h3>Saldo opladen</h3>
+
+      <input
+        type="number"
+        placeholder="Bedrag"
+        value={addAmount}
+        onChange={(e) => setAddAmount(e.target.value)}
+      />
+
+      <div className="modal-actions">
+        <button onClick={() => setShowBalanceModal(false)}>
+          Annuleren
+        </button>
+        <button className="primary" onClick={addBalance}>
+          Opladen
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+{showTripModal && (
+  <div className="modal-overlay">
+    <div className="modal">
+      <h3>Nieuwe trip</h3>
+
+      <input placeholder="Van" />
+      <input placeholder="Naar" />
+      <input placeholder="Type vervoer" />
+
+      <div className="modal-actions">
+        <button onClick={() => setShowTripModal(false)}>
+          Sluiten
+        </button>
+        <button className="primary">Opslaan</button>
+      </div>
+    </div>
+  </div>
+)}
+    </div>
+  );
 }
 
 export default Dashboard;
