@@ -1383,3 +1383,7 @@ h1{
   padding: 6px 12px;
   border-radius: 6px;
 }
+
+.sidebar2{
+  margin-left: -30px;
+}
