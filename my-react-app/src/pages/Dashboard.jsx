@@ -7,27 +7,60 @@ import { MdTrendingUp } from "react-icons/md";
 
 function Dashboard() {
   const [balance, setBalance] = useState(50);
-  const [trips] = useState(12);
   const [km] = useState(320);
 
   const [showTripModal, setShowTripModal] = useState(false);
   const [showBalanceModal, setShowBalanceModal] = useState(false);
   const [addAmount, setAddAmount] = useState("");
 
-  const recentTrips = [
-    { from: "Utrecht", to: "Amsterdam", time: "25 min", type: "Auto", cost: 4.5, date: "Vandaag" },
-    { from: "Amsterdam", to: "Rotterdam", time: "40 min", type: "Trein", cost: 7.2, date: "Gisteren" },
-  ];
+  const [tripsList, setTripsList] = useState([
+    { from: "Utrecht", to: "Amsterdam", type: "Auto", cost: 4.5, date: "Vandaag" },
+    { from: "Amsterdam", to: "Rotterdam", type: "Trein", cost: 7.2, date: "Gisteren" },
+  ]);
 
-  const totalCost = recentTrips.reduce((acc, t) => acc + t.cost, 0);
+  const [trip, setTrip] = useState({
+    from: "",
+    to: "",
+    type: "",
+    cost: "",
+  });
 
-  const addBalance = () => {
+  const handleSaveTrip = () => {
+    if (!trip.from || !trip.to || !trip.type) {
+      alert("Vul alle velden in");
+      return;
+    }
+
+    const newTrip = {
+      ...trip,
+      cost: Number(trip.cost) || 0,
+      date: "Vandaag",
+    };
+
+    setTripsList([newTrip, ...tripsList]);
+
+    setTrip({ from: "", to: "", type: "", cost: "" });
+    setShowTripModal(false);
+  };
+
+  const handleAddBalance = () => {
     const amount = Number(addAmount);
     if (!amount) return;
-    setBalance(balance + amount);
+
+    setBalance((prev) => prev + amount);
     setAddAmount("");
     setShowBalanceModal(false);
   };
+
+  const totalCost = tripsList.reduce((acc, t) => acc + t.cost, 0);
+
+  const mostUsed = tripsList.reduce((acc, t) => {
+    acc[t.type] = (acc[t.type] || 0) + 1;
+    return acc;
+  }, {});
+
+  const topType =
+    Object.entries(mostUsed).sort((a, b) => b[1] - a[1])[0]?.[0] || "Auto";
 
   return (
     <div className="dashboard">
@@ -51,7 +84,7 @@ function Dashboard() {
 
         <div className="card">
           <h3>Trips</h3>
-          <p>{trips}</p>
+          <p>{tripsList.length}</p>
         </div>
 
         <div className="card">
@@ -66,9 +99,9 @@ function Dashboard() {
 
       <div className="insights">
         <h3>Inzichten</h3>
-        <p><MdTrendingUp /> Meer activiteit deze week</p>
+        <p><MdTrendingUp /> Activiteit overzicht</p>
         <p><FaEuroSign /> €{totalCost.toFixed(2)} kosten</p>
-        <p><FaCar /> Meest gebruikt: Auto</p>
+        <p><FaCar /> Meest gebruikt: {topType}</p>
       </div>
 
       <div className="bottom-section">
@@ -76,48 +109,71 @@ function Dashboard() {
       </div>
 
       {showBalanceModal && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <h3>Saldo opladen</h3>
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Saldo opladen</h3>
 
-      <input
-        type="number"
-        placeholder="Bedrag"
-        value={addAmount}
-        onChange={(e) => setAddAmount(e.target.value)}
-      />
+            <input
+              type="number"
+              placeholder="Bedrag"
+              value={addAmount}
+              onChange={(e) => setAddAmount(e.target.value)}
+            />
 
-      <div className="modal-actions">
-        <button onClick={() => setShowBalanceModal(false)}>
-          Annuleren
-        </button>
-        <button className="primary" onClick={addBalance}>
-          Opladen
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+            <div className="modal-actions">
+              <button onClick={() => setShowBalanceModal(false)}>
+                Annuleren
+              </button>
+              <button className="primary" onClick={handleAddBalance}>
+                Opladen
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
+      {showTripModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Nieuwe trip</h3>
 
-{showTripModal && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <h3>Nieuwe trip</h3>
+            <input
+              placeholder="Van"
+              value={trip.from}
+              onChange={(e) => setTrip({ ...trip, from: e.target.value })}
+            />
 
-      <input placeholder="Van" />
-      <input placeholder="Naar" />
-      <input placeholder="Type vervoer" />
+            <input
+              placeholder="Naar"
+              value={trip.to}
+              onChange={(e) => setTrip({ ...trip, to: e.target.value })}
+            />
 
-      <div className="modal-actions">
-        <button onClick={() => setShowTripModal(false)}>
-          Sluiten
-        </button>
-        <button className="primary">Opslaan</button>
-      </div>
-    </div>
-  </div>
-)}
+            <input
+              placeholder="Type vervoer"
+              value={trip.type}
+              onChange={(e) => setTrip({ ...trip, type: e.target.value })}
+            />
+
+            <input
+              type="number"
+              placeholder="Kosten"
+              value={trip.cost}
+              onChange={(e) => setTrip({ ...trip, cost: e.target.value })}
+            />
+
+            <div className="modal-actions">
+              <button onClick={() => setShowTripModal(false)}>
+                Sluiten
+              </button>
+
+              <button className="primary" onClick={handleSaveTrip}>
+                Opslaan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -13,6 +13,10 @@ function Settings() {
     return localStorage.getItem("language") || "nl";
   });
 
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
     localStorage.setItem("darkMode", darkMode);
@@ -35,13 +39,30 @@ function Settings() {
     }
   };
 
+  const handleChangePassword = () => {
+    if (!newPassword || !confirmPassword) {
+      alert("Vul alle velden in");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      alert("Wachtwoorden komen niet overeen");
+      return;
+    }
+
+    alert("Wachtwoord gewijzigd (demo)");
+    setNewPassword("");
+    setConfirmPassword("");
+    setShowPasswordModal(false);
+  };
+
   return (
     <div className="settings-page">
       <h1>Instellingen</h1>
       <p className="subtitle">Beheer je voorkeuren en account</p>
 
       <div className="settings-grid">
-        
+
         <div className="settings-card">
           <h3>Weergave</h3>
 
@@ -90,7 +111,7 @@ function Settings() {
         <div className="settings-card">
           <h3>Account</h3>
 
-          <button className="btn">
+          <button className="btn" onClick={() => setShowPasswordModal(true)}>
             Wachtwoord wijzigen
           </button>
 
@@ -103,6 +124,38 @@ function Settings() {
         </div>
 
       </div>
+
+      {showPasswordModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Wachtwoord wijzigen</h3>
+
+            <input
+              type="password"
+              placeholder="Nieuw wachtwoord"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+
+            <input
+              type="password"
+              placeholder="Bevestig wachtwoord"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+
+            <div className="modal-actions">
+              <button onClick={() => setShowPasswordModal(false)}>
+                Annuleren
+              </button>
+
+              <button className="primary" onClick={handleChangePassword}>
+                Opslaan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

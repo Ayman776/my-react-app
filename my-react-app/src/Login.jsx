@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const correctEmail = ""
-const correctPassword = ""
+const correctEmail = "123@a.nl"
+const correctPassword = "123"
 
 
 function Login() {
@@ -23,6 +23,7 @@ function Login() {
         }
     };
 
+ 
     return (
         <div className="auth-page">
             <div className="home">
