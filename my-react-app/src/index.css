@@ -1050,7 +1050,7 @@ body {
 
 .search {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.3rem;
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 1rem;
@@ -1065,6 +1065,7 @@ body {
 
 .faq-item {
   margin-bottom: 1rem;
+  color: #006eff;
 }
 
 .faq-item h4 {
@@ -1077,7 +1078,7 @@ body {
 }
 
 .contact a {
-  color: #007bff;
+  color: #006eff;
   text-decoration: none;
 }
 
