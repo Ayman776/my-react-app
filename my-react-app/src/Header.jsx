@@ -39,6 +39,9 @@ function Header() {
                                <button className="dropdown-item"><a href="./profile"> Profiel</a></button>
                                 <button className="dropdown-item" onClick={handleLogout}>
                                     <a href="./login">Uitloggen</a>
+                                    <button className="dropdown-item"><a href="./settings"> Instellingen</a></button>
+                                    
+
                                 </button>
                             </div>
                         )}

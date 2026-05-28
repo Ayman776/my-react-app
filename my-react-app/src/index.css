@@ -1388,3 +1388,28 @@ h1{
 .sidebar2{
   margin-left: -30px;
 }
+
+
+.admin-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f4f7fb;
+  font-family: Arial, sans-serif;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-header h1 {
+  margin-bottom: 0.3rem;
+}
+
+.admin-header p {
+  color: #666;
+}

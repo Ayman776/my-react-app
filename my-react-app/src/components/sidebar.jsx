@@ -17,6 +17,7 @@ function Sidebar (){
  <li><Link to="/privacy">Privacy</Link></li>
   <li><Link to="/settings">Instellingen</Link></li>
     <li><Link to="/klantenservice">Klantenservice</Link></li>
+    <li><Link to="/admin">Admin</Link></li>
   </ul>
   </div>
  

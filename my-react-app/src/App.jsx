@@ -9,6 +9,7 @@ import Login from "./Login.jsx";
 import Register from "./Register.jsx";
 import Vervoer from "./pages/vervoer.jsx";
 import Klantenservice from "./pages/klantenservice.jsx";
+import Admin from "./pages/Admin.jsx";
 
 
 
@@ -74,7 +75,16 @@ function App() {
           }
         />
 
-        
+        <Route
+          path="/Admin"
+          element={
+            <div className="layout" style={{ display: "flex" }}>
+              <Sidebar />
+              <Admin />
+            </div>
+          }
+        />
+
     
 
 
